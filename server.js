@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 
-
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 const db = mysql.createConnection({
@@ -12,7 +12,7 @@ const db = mysql.createConnection({
   });
 
 app.use(express.json());
-
+app.use(cors());
 
 app.post('/formsn',(req,res) => {
     const {repForm} = req.body;
