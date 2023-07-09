@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
-
 const cors = require('cors');
+
 const app = express();
 const port = process.env.PORT || 3000;
 const db = mysql.createConnection({
@@ -12,12 +12,11 @@ const db = mysql.createConnection({
   });
 
 app.use(express.json());
-app.use(cors());
-app.use(express.static('public'));
+app.use(cors()); 
 
 app.post('/formsn',(req,res) => {
     const {repForm} = req.body;
-
+    console.log("hello")
     db.query("INSERT INTO formulaire (repForm) VALUES (?)", [repForm],(error,result) =>{
         if (error) throw error;
         return res.status(201).send({message: 'Formulaire correctement envoyé'})
