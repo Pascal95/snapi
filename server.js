@@ -13,6 +13,7 @@ const db = mysql.createConnection({
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'));
 
 app.post('/formsn',(req,res) => {
     const {repForm} = req.body;
